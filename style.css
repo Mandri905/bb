@@ -1,0 +1,383 @@
+/**bootstrap переделанный*/
+@media (min-width: 768px) {
+  .container {
+    width: 568px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    width: 768px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    width: 1024px;
+  }
+}
+/*/bootstrap*/
+
+/*нивидимый квадрат у чек бокса и кнопки */
+.mobile-menu__checkbox, .mobile-menu {
+      display: none;
+}
+
+
+@media (max-width: 1023px) {
+    /*****************************************************************/
+    .mobile-menu {                /*ОБЩИЕ СВОЙСТВА полосы навигации НАВИГАЦИИ header__menu*/
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 90px;
+        z-index: 9999999;
+    }
+    /*Свойства для label свойства значка*/
+    .mobile-menu__btn {          
+        position: relative;
+        left: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 30px;
+        cursor: pointer;
+        transition: .4s;
+    }
+    /*ТРИ ЧЕРТЫ*/
+    .mobile-menu__icon {
+        display: block;
+        position: relative;
+        background: white;
+        width: 90%;
+        height: 4px;
+        transition: .4s;
+    }
+    .mobile-menu__icon::after, .mobile-menu__icon::before {
+        content: "";
+        display: block;
+        position: absolute;
+        background: white;
+        width: 100%;
+        height: 4px;
+        transition: .4s;
+    }
+    .mobile-menu__icon::after {
+        top: 8px;
+    }
+    .mobile-menu__icon::before {
+        top: -8px;
+    }
+    /********************************************************************/
+    .mobile-menu__container {       /*свойства контейнера меню*/
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        top: 90px;                    /*отступ от верхнего края выпадающей области*/
+        left: 0;
+        right: 0;
+        z-index: 999;
+        height: 0;
+        opacity: 0.8;
+        transition: .5s;
+        overflow: hidden;
+        background: black;
+    }
+    .mobile-menu__list {            /*свойства списка меню*/
+        transition: .5s;
+        list-style: none;
+        padding-left: 0;
+    }
+    .mobile-menu__item {            /*свойства пунктов меню*/
+        padding: 10px 10px 15px 15px;
+    }
+    .mobile-menu__link {            /*свойства ссылок меню*/   
+      text-decoration: none;
+      color: white;
+      -webkit-transition-property: color,opacity,background-color,border-color,-webkit-transform,-webkit-filter;
+      transition-property: color,opacity,background-color,border-color,-webkit-transform,-webkit-filter;
+      transition-property: color,opacity,transform,filter,background-color,border-color;
+      transition-property: color,opacity,transform,filter,background-color,border-color,-webkit-transform,-webkit-filter;
+      -webkit-transition-duration: .25s;
+      transition-duration: .25s;
+      left: 5px;
+      right: 5px;
+    }
+    /*Свойство opacity позволяет сделать любой элемент веб-страницы частично или полностью прозрачным. 1 (непрозрачный)*/
+    .mobile-menu__checkbox:checked ~ .mobile-menu__nav {
+      opacity: 1;
+    }
+    /*высота выпадающего меню*/
+    .mobile-menu__checkbox:checked ~ .mobile-menu__container {
+      height: auto;
+    }
+    /*Свойства фона не наследуются, но фон родительского блока будет просвечивать по умолчанию из-за начального значения в background-color: transparent. Средняя линия окрашивается в цвет основного фона*/
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon {
+      background: transparent;
+    }
+    /*позиционируем верхнию и нижнюю линию*/
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon::before, 
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon::after {
+      top: 0;
+    }
+    /*переворачиваем верхнюю линию в крестик*/
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon::after {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+    /*переворачиваем нижнюю линию в крестик*/
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon::before {
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+    /*************************************************************************************/
+}
+
+@media (max-width: 1023px) {
+    body.page_index {
+        background-color: #fff;
+        font-size: 15px;
+    }
+   
+    /*Меню не отображать*/
+    .header .header__menu {
+        display: none;
+        max-width: none;
+        padding: 0;
+        /*position: absolute;
+        right: -15px;
+        top: 100%;
+        -webkit-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: .25s;
+        transition-duration: .25s;
+        z-index: 3;
+        width: 270px;*/
+    }
+    /*Иконки не отображать*/
+    .header .s-icons {
+        display: none;
+    }
+    /*
+    .header .header__menu-toggle {
+        cursor: pointer;
+        display: block;
+        height: 24px;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        top: calc(50% - 12px);
+        -webkit-transition: opacity .25s;
+        transition: opacity .25s;
+        width: 32px;
+    }  
+
+    .header .header__menu-toggle span {
+        background-color: #fff;
+        border-radius: 2px;
+        height: 4px;
+        left: 0;
+        position: absolute;
+        -webkit-transition-duration: .25s;
+        transition-duration: .25s;
+        -webkit-transition-property: left,height,top,bottom,-webkit-transform;
+        transition-property: left,height,top,bottom,-webkit-transform;
+        transition-property: left,height,top,bottom,transform;
+        transition-property: left,height,top,bottom,transform,-webkit-transform;
+        width: 100%;
+    } */
+} 
+
+
+body {
+    color: #2d2d2d;                 /*цвет шрифта*/
+    margin: 0;
+    font-family: Lato,sans-serif;  
+    font-size: 14px;
+    font-weight: 500;
+    -webkit-text-size-adjust: 100%;
+}
+
+footer, header, main, nav {
+    display: block;                 /*Элемент генерирует структурный блок*/
+}
+
+.header {
+    background-color: #101010;
+    height: 90px;
+    position: relative;             /*определяет, какой из алгоритмов позиционирования используется для вычисления положения блока. relative - Положение блока рассчитывается в соответствии с нормальным потоком.*/
+    width: 100%;
+}
+
+.wrap {
+    min-height: 100vh;
+    min-width: 320px;
+    overflow: hidden;               /* управляет отображением содержания блочного элемента, если оно целиком не помещается и выходит за область заданных размеров. hidden - Отображается только область внутри элемента, остальное будет скрыто.*/
+    padding-bottom: 90px;           /*Устанавливает значение поля от нижнего края содержимого элемента*/
+}
+
+.container, .wrap {
+    position: relative;             /*определяет, какой из алгоритмов позиционирования используется для вычисления положения блока. relative - Положение блока рассчитывается в соответствии с нормальным потоком.*/
+}
+
+.container {
+    clear: both;                    /*указывает, какие стороны блока/блоков элемента не должны прилегать к плавающим блокам, находящемся выше в исходном документе. both -Смещает элемент вниз относительно нижнего края любого плавающего слева и справа элемента, находящемся выше в исходном документе.*/
+    margin: 0 auto;
+}
+
+.header .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;                  /*отвечает за вывод и визуальное отображение элементов на странице. flex -Элемент генерирует структурный блок, который создает адаптивный контейнер для дочерних элементов.*/
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;            /*Flex-элементы можно выравнивать по поперечной оси текущей строки flex-контейнера. center - Поля flex-элемента центрируется по поперечной оси в пределах flex-линии.*/
+    height: inherit;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; /*Свойство выравнивает flex-элементы по главной оси flex-контейнера, распределяя свободное пространство, незанятое flex-элементами. Flex-элементы равномерно распределяются по линии.*/
+}
+
+.header .header__logo {
+    display: block;
+    height: 50px;
+    min-width: 119px;
+    position: relative;
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s;
+    width: 119px;
+}
+
+.header__logo_img {
+    height: 50px;    
+}
+
+/*отвечает за вывод и визуальное отображение элементов на странице. none -Элемент не генерирует никакой контейнер, полностью удаляясь со страницы.*/
+/*.header .header__menu-toggle {
+    display: none;                  
+}
+*/
+/*Свойства навигации*/
+.header .header__menu {
+    max-width: 630px;
+    padding: 0 15px;
+    width: 100%;
+}
+
+              /* убираем отступы и поля, а также list-style для "ul", 
+             * и добавляем "position:relative" */
+            .navigation ul {
+                padding:0;
+                margin:0;
+                list-style: none;
+                position: relative;
+          display: flex;   
+          justify-content: space-around; 
+                }
+            
+            /* применяем inline-block позиционирование к элементам навигации */
+            .navigation ul li {
+                /* margin: 0px -7px 0 0; */
+                display:inline-block; /* чтобы меню было в ряд */
+                background-color: black;
+                opacity: 0.8;
+                }
+            
+            /* стилизуем ссылки */
+            .navigation a {
+                display:block;
+                padding:0 10px;
+                color:#FFF;
+                line-height: 60px; 
+                text-decoration:none;
+            }
+            
+            /* изменяем цвет фона при наведении курсора */
+            .navigation a:hover {
+                background-color: #000000;
+                }
+    
+  /* скрываем выпадающие списки по умолчанию
+         * и задаем абсолютное позиционирование */
+            .navigation ul ul {
+                display: none;
+                position: absolute;
+                top: 75px;
+            }
+            
+            /* отображаем выпадающий список при наведении */
+            .navigation ul li:hover > ul {
+                display:block;
+                height: auto;
+            }
+            
+            /* первый уровень выпадающего списка */
+            .navigation ul ul li {
+                min-width:170px;
+                float:none;
+                display:list-item;
+                position: relative;
+            }    
+
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+.s-icons ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style-type: none;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.s-icons .s-icons__s-icon.s-icons__s-icon_ins {
+    background-image: url(s-icon_ins.png);
+}
+
+.s-icons .s-icons__s-icon.s-icons__s-icon_fb {
+    background-image: url(s-icon_fb.png);
+}
+.s-icons .s-icons__s-icon {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    display: block;
+    height: 26px;
+    width: 26px;
+}
+
+.footer {
+    background-color: #2c2c2c;
+    bottom: 0;
+    height: 90px;
+    position: absolute;
+    width: 100%;
+}
+
+
+
+
+
